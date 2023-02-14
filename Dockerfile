@@ -1,6 +1,6 @@
-FROM python:3.8
+FROM rasa/rasa:3.4.2-full
 
-WORKDIR /app/image_search
+WORKDIR /app/chatbot
 
 COPY requirements.txt .
 
