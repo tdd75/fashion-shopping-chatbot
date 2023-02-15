@@ -12,19 +12,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-
-class ActionHelloWorld(Action):
-
-    def name(self) -> Text:
-        return 'action_hello_world'
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text='Hello World!')
-
-        return []
+from .services import web_service
 
 
 class ActionFindCategory(Action):
@@ -37,12 +25,9 @@ class ActionFindCategory(Action):
 
         category = tracker.get_slot('category')
 
-        # TODO: call API
-        list_product = [
-            {
-                'name': 'Product 1',
-            }
-        ]
+        list_product = web_service.get_product({
+            'category_id': category
+        })
 
         if len(list_product) > 0:
             dispatcher.utter_template('utter_list_product', tracker)
@@ -69,12 +54,9 @@ class ActionFindSize(Action):
 
         size = tracker.get_slot('size')
 
-        # TODO: call API
-        list_product = [
-            {
-                'name': 'Product 1',
-            }
-        ]
+        list_product = web_service.get_product({
+            'size': size
+        })
 
         if len(list_product) > 0:
             dispatcher.utter_template('utter_list_product', tracker)
@@ -102,11 +84,10 @@ class ActionFindColor(Action):
         color = tracker.get_slot('color')
 
         # TODO: call API
-        list_product = [
-            {
-                'name': 'Product 1',
-            }
-        ]
+
+        list_product = web_service.get_product({
+            'color': color
+        })
 
         if len(list_product) > 0:
             dispatcher.utter_template('utter_list_product', tracker)
