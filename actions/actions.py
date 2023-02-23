@@ -14,82 +14,48 @@ from rasa_sdk.executor import CollectingDispatcher
 
 from .services import web_service
 
+import logging
+_logger = logging.getLogger(__name__)
 
-class ActionFindCategory(Action):
+
+class ActionFindProduct(Action):
     def name(self) -> Text:
-        return 'action_find_category'
+        return 'action_find_product'
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        category = tracker.get_slot('category')
+        _logger.error(tracker.get_slot('category'))
 
-        list_product = web_service.get_product({
-            'category_id': category
-        })
+        query = {}
+        query_messages = []
 
-        if len(list_product) > 0:
-            dispatcher.utter_template('utter_list_product', tracker)
-            dispatcher.utter_message(json_message={
-                'payload': 'list_product',
-                'data': {
-                    'list_product': list_product,
-                    'type': 'list_product'
-                }
-            })
-        else:
-            dispatcher.utter_template('utter_sorry', tracker)
+        if tracker.get_slot('category') != None:
+            query['category'] = tracker.get_slot('category')
+            query_messages.append(f'Category: {tracker.get_slot("category")}')
 
-        return []
+        if tracker.get_slot('color') != None:
+            query['color'] = tracker.get_slot('color')
+            query_messages.append(f'Color: {tracker.get_slot("color")}')
 
+        if tracker.get_slot('size') != None:
+            query['size'] = tracker.get_slot('size')
+            query_messages.append(f'Size: {tracker.get_slot("size")}')
 
-class ActionFindSize(Action):
-    def name(self) -> Text:
-        return 'action_find_size'
+        _logger.error(tracker.latest_message['entities'])
+        price = [entity['role'] for entity in tracker.latest_message['entities'] if entity['entity'] == 'price']
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        if price:
+            query['ordering'] = 'price' if price[0] == 'asc' else '-price'
+            query_messages.append(
+                f'Price: {"High" if price[0] == "asc" else "Low"}')
 
-        size = tracker.get_slot('size')
-
-        list_product = web_service.get_product({
-            'size': size
-        })
+        list_product = web_service.get_product(query)
 
         if len(list_product) > 0:
-            dispatcher.utter_template('utter_list_product', tracker)
-            dispatcher.utter_message(json_message={
-                'payload': 'list_product',
-                'data': {
-                    'list_product': list_product,
-                    'type': 'list_product'
-                }
-            })
-        else:
-            dispatcher.utter_template('utter_sorry', tracker)
-
-        return []
-
-
-class ActionFindColor(Action):
-    def name(self) -> Text:
-        return 'action_find_color'
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        color = tracker.get_slot('color')
-
-        # TODO: call API
-
-        list_product = web_service.get_product({
-            'color': color
-        })
-
-        if len(list_product) > 0:
+            dispatcher.utter_message(
+                text=' | '.join(query_messages))
             dispatcher.utter_template('utter_list_product', tracker)
             dispatcher.utter_message(json_message={
                 'payload': 'list_product',

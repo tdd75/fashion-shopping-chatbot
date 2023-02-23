@@ -21,20 +21,10 @@ rules:
       - intent: ask_func
       - action: utter_func
 
-  - rule: find product by category
+  - rule: find product
     steps:
-      - intent: ask_category
-      - action: action_find_category
-
-  - rule: find product by color
-    steps:
-      - intent: ask_color
-      - action: action_find_color
-
-  - rule: find product by size
-    steps:
-      - intent: ask_size
-      - action: action_find_size
+      - intent: ask_product
+      - action: action_find_product
 
   # - rule: cancel order
   #   steps:

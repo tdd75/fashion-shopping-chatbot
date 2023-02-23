@@ -136,173 +136,39 @@ nlu:
       - Is there anything I can ask of you?
       - Can you contribute in any way?
 
-  - intent: ask_category
+  - intent: ask_product
     examples: |
-      - I'm looking to purchase a [shirt](category).
-      - I want to get a [shirt](category).
-      - Can you help me buy a [shirt](category)?
-      - I'd like to buy a [shirt](category), please.
-      - I need to purchase a [shirt](category).
-      - Where can I buy a [shirt](category)?
-      - I want to purchase a new [shirt](category).
-      - I'm searching for a [shirt](category) to buy.
-      - Can you assist me in buying a [shirt](category)?
-      - I'm interested in buying a [shirt](category).
-      - I'm on the hunt for a [shirt](category).
-      - Can you suggest a good [shirt](category) to buy?
-      - I'm looking to buy a [shirt](category) online.
-      - I want to try on a [shirt](category) before I buy it.
-      - Can you direct me to a good place to buy a [shirt](category)?
-      - I'm seeking to buy a [shirt](category).
-      - I want to find a [shirt](category) to purchase.
-      - I'm in the market for a new [shirt](category).
-      - Can you help me locate a [shirt](category) to buy?
-      - I'm after a [shirt](category) to purchase.
+      - I am in the market for an [affordable]{"entity": "price", "role": "asc"} [red](color) [shoe](category) in size [S](size).
+      - I need a size [M](size) [blue](color) [topwear](category) that is [cost-effective]{"entity": "price", "role": "asc"}.
+      - I'm looking for a [green](color) [bottomwear](category) in size [L](size) that [won't break the bank]{"entity": "price", "role": "asc"}.
+      - What I'm after is a [cheap]{"entity": "price", "role": "asc"} [yellow](color) [watches](category) that is size [XL](size).
+      - I am searching for a size [XXL](size) [orange](color) [socks](category) that is [reasonably priced]{"entity": "price", "role": "asc"}.
+      - My preference is for a [purple](color) [shoes](category) in size [4](size) that is [low-cost]{"entity": "price", "role": "asc"}.
+      - I would like to find a [excellent]{"entity": "price", "role": "desc"} size [4.5](size) [pink](color) [belts](category).
+      - I am interested in purchasing a [brown](color) [flip flops](category) that is both size [5](size) and [inexpensive]{"entity": "price", "role": "asc"}.
+      - I'm hoping to buy a [black](color) [bags](category) in size [5.5](size) that is [high-quality]{"entity": "price", "role": "desc"}.
+      - My aim is to find a [white](color) [innerwear](category) that is size [6](size) and [won't cost me too much]{"entity": "price", "role": "asc"}.
+      - I want a [gray](color) [sandal](category) that is both [superior]{"entity": "price", "role": "desc"} and size [6.5](size).
+      - I'm seeking out a size [7](size) [beige](color) [shoe accessories](category) that is [low-priced]{"entity": "price", "role": "asc"}.
+      - I'm in the market for a [superior]{"entity": "price", "role": "desc"} [maroon](color) [fragrance](category) that is size [7.5](size).
+      - I would like to purchase a [navy](color) [jewellery](category) in size [8](size) that is [top-notch]{"entity": "price", "role": "desc"}.
+      - I'm hoping to come across a [teal](color) [lips](category) that is both size [8.5](size) and [premium]{"entity": "price", "role": "desc"}.
+      - My objective is to find a size [9](size) [olive](color) [saree](category) that is [exceptional]{"entity": "price", "role": "desc"}.
+      - I need a [fine]{"entity": "price", "role": "desc"} [lavender](color) [eyewear](category) that is also size [9.5](size).
+      - I'm looking to buy a [burgundy](color) [nails](category) in size [10](size) that is [outstanding]{"entity": "price", "role": "desc"}.
+      - I'm on the hunt for a size [36](size) [turquoise](color) [scarves](category) that is [superb]{"entity": "price", "role": "desc"}.
+      - My aim is to find a [splendid]{"entity": "price", "role": "asc"} [coral](color) [dress](category) in size [37](size).
+      - I'm interested in finding a size [38](size) [red](color) [wallets](category) that is [good]{"entity": "price", "role": "desc"}.
+      - I want a [blue](color) [apparel set](category) that is both size [39](size) and [high-grade]{"entity": "price", "role": "desc"}.
+      - I'm searching for a [quality]{"entity": "price", "role": "desc"} [green](color) [headwear](category) that is size [40](size).
+      - I would like to purchase a size [42](size) [yellow](color) [mufflers](category) that is [first-rate]{"entity": "price", "role": "desc"}.
+      - I'm hoping to find an [prime]{"entity": "price", "role": "desc"} [green](color) [skin care](category) in size [43](size).
+      - My preference is for a [orange](color) [makeup](category) that is both size [44](size) and [elite]{"entity": "price", "role": "desc"}.
+      - I need a size [XS](size) [purple](color) [ties](category) that [grade-A]{"entity": "price", "role": "desc"}.
+      - I want to buy a [pink](color) [skin](category) that is size [2XL](size) and [top-quality]{"entity": "price", "role": "desc"}.
+      - I'm seeking out a [best-in-class]{"entity": "price", "role": "desc"} [gray](color) [accessories](category) that is also size [3XL](size).
+      - I'm in the market for a [coral](color) [hair](category) in size [4XL](size) that is [high-end]{"entity": "price", "role": "desc"}.
 
-  - intent: ask_size
-    examples: |
-      - I'm looking for size [XL](size) shoes.
-      - I want to purchase [XL](size) shoes.
-      - Can you help me find [XL](size) shoe size?
-      - I'm in need of [XL](size) shoes.
-      - I'd like to buy [XL](size) shoe size.
-      - Where can I find [XL](size) size shoes?
-      - I want to shop for [XL](size) shoe size.
-      - I'm searching for [XL](size) shoes.
-      - Can you assist me in finding [XL](size) shoes?
-      - I'm interested in [XL](size) shoe size.
-      - I'm on the hunt for [XL](size) shoes.
-      - Can you suggest any [XL](size) shoes?
-      - I'm looking to buy [XL](size) shoes.
-      - I want to try on [XL](size) shoes.
-      - Can you direct me to [XL](size) shoe size?
-      - I'm seeking [XL](size) shoes.
-      - I want to find some [XL](size) shoes.
-      - I'm in the market for [XL](size) shoes.
-      - Can you help me locate [XL](size) shoes?
-      - I'm after [XL](size) shoe size.
-
-  - intent: ask_color
-    examples: |
-      - I'm searching for products in the color [Red](color).
-      - I'm in the market for [Red](color) colored products.
-      - I need to find [Red](color) products.
-      - I want to purchase products that are [Red](color) in color.
-      - I aim to buy products that are of the color [Red](color).
-      - I'd like to find products that are colored [Red](color).
-      - I'm looking for products in the shade of [Red](color).
-      - I need to find products that come in the color [Red](color).
-      - I desire to purchase products that have a [Red](color) hue.
-      - I'm interested in finding products that are [Red](color).
-      - I'm in search of [Red](color)-colored items.
-      - I aim to find products that are of a [Red](color) tint.
-      - I want to buy products that are colored in [Red](color).
-      - I'm on the hunt for [Red](color)-colored products.
-      - I want to find products that have a [Red](color) appearance.
-      - I'd like to purchase products that are in the [Red](color) spectrum.
-      - I'm looking for [Red](color) products to add to my collection.
-      - I aim to find products that are predominantly [Red](color).
-      - I want to buy products that have a strong [Red](color) tint.
-      - I need to find products that exhibit the color [Red](color).
-
-  - intent: ask_low_price
-    examples: |
-      - I want cheap products
-      - I'm looking for affordable products.
-      - I need to find products that are budget-friendly.
-      - I'd like to purchase products that are inexpensive.
-      - I'm in search of reasonably priced products.
-      - I want to buy products that won't break the bank.
-      - I desire to find cost-effective products.
-      - I'm interested in products that are reasonably priced.
-      - I'm on the hunt for products that are reasonably priced.
-      - I want products that are priced affordably.
-      - I need to find products that are wallet-friendly.
-      - I aim to buy products that are not too expensive.
-      - I want to get my hands on low-cost products.
-      - I'm searching for products that offer good value for money.
-      - I'm in the market for products that are inexpensive yet of good quality.
-      - I want to find products that won't cost me an arm and a leg.
-      - I desire to purchase products that are cost-efficient.
-      - I aim to buy products that are budget-friendly and high-quality.
-      - I need to find products that won't strain my wallet.
-      - I'm looking for products that are reasonably priced and meet my needs.
-      - I want to buy products that offer the best value for my money.
-  - intent: ask_high_price
-    examples: |
-      - I'm searching for luxurious and high-quality products.
-      - I'm looking for the best and most luxurious products.
-      - I want to invest in premium and luxurious items.
-      - Can you recommend some luxurious and top-notch products?
-      - I'd like to buy luxury products of the finest quality.
-      - I need to find some premium and excellent products.
-      - Where can I find top-quality and luxurious products?
-      - I want to purchase luxurious and high-end products.
-      - I'm after premium and well-made products.
-      - Can you assist me in finding luxurious and exceptional products?
-      - I'm interested in finding luxury and first-class products.
-      - I'm on the hunt for top-notch and luxurious items.
-      - Can you suggest some luxurious and outstanding products?
-      - I'm looking to buy luxury products that are well-made.
-      - I want to find luxury products that are of the best quality.
-      - Can you direct me to luxury products that are second to none?
-      - I'm seeking luxury products that are well-crafted.
-      - I want to find luxury products that are of excellent quality.
-      - Can you help me locate luxurious and high-quality products?
-      - I'm after luxury products that are both good and high-end.
-
-  - lookup: color
-    examples: |
-      - Red
-      - Blue
-      - Green
-      - Yellow
-      - Orange
-      - Purple
-      - Pink
-      - Brown
-      - Black
-      - White
-      - Gray
-      - Beige
-      - Maroon
-      - Navy
-      - Teal
-      - Olive
-      - Lavender
-      - Burgundy
-      - Turquoise
-      - Coral
-  - lookup: size
-    examples: |
-      - XS
-      - S
-      - M
-      - L
-      - XL
-      - XXL
-      - 4
-      - 4.5
-      - 5
-      - 5.5
-      - 6
-      - 6.5
-      - 7
-      - 7.5
-      - 8
-      - 8.5
-      - 9
-      - 9.5
-      - 10
-      - 36
-      - 37
-      - 38
-      - 39
-      - 40
-      - 41
-      - 42
-      - 43
-      - 44
   - lookup: category
     examples: |
       - Topwear

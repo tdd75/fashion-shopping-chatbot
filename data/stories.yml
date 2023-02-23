@@ -36,53 +36,17 @@ stories:
       - action: utter_iamabot
       - intent: ask_func
       - action: utter_func
-      - intent: ask_find_product
-      - action: find_category_form
-      - active_loop: find_category_form
-      - slot_was_set:
-          - category: category
-      - slot_was_set:
-          - category: null
-      - action: find_color_form
-      - active_loop: find_color_form
-      - slot_was_set:
-          - category: color
-      - slot_was_set:
-          - category: null
-      - action: find_size_form
-      - active_loop: find_size_form
-      - slot_was_set:
-          - category: size
-      - slot_was_set:
-          - category: null
-      - active_loop: null
+      - intent: ask_product
+      - action: action_find_product
       - intent: thanks
       - action: utter_noproblem
 
-  - story: find by category
+  - story: find product short
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: ask_category
-      - action: action_find_category
-      - intent: thanks
-      - action: utter_noproblem
-
-  - story: find by color
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_color
-      - action: action_find_color
-      - intent: thanks
-      - action: utter_noproblem
-
-  - story: find by size
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_size
-      - action: action_find_size
+      - intent: ask_product
+      - action: action_find_product
       - intent: thanks
       - action: utter_noproblem
 # - story: interactive_story_1

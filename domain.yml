@@ -10,16 +10,13 @@ intents:
   - bot_challenge
   - thanks
   - ask_func
-  - ask_category
-  - ask_size
-  - ask_color
-  - ask_low_price
-  - ask_high_price
+  - ask_product
 
 entities:
   - color
   - size
   - category
+  - price
 
 slots:
   category:
@@ -37,6 +34,11 @@ slots:
     mappings:
       - type: from_entity
         entity: size
+  price:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price
 
 responses:
   utter_greet:
@@ -57,9 +59,6 @@ responses:
 
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
-
-  utter_bot_challenge:
-    - text: Vâng, Tôi là một trợ lý ảo.
 
   utter_list_product:
     - text: |-
@@ -86,26 +85,11 @@ responses:
     - text: Sorry, I couldn't find any matching products
 
 actions:
-  - action_find_color
-  - action_find_size
-  - action_find_category
-  - action_find_low_price
-  - action_find_high_price
+  - action_find_product
   - utter_list_product
   - utter_func
   - utter_noproblem
   - utter_sorry
-
-forms:
-  find_category_form:
-    required_slots:
-      - category
-  find_color_form:
-    required_slots:
-      - color
-  find_size_form:
-    required_slots:
-      - size
 
 session_config:
   session_expiration_time: 60
