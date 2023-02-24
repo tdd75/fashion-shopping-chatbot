@@ -1,14 +1,9 @@
 import requests
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
-
-
 class WebService:
     def __init__(self):
-        # self.base_url = 'http://web:8000/api/v1'
-        self.base_url = 'http://localhost:8000/api/v1'
+        self.base_url = 'http://web:8000/api/v1'
         self.session = requests.session()
         self.token = self.get_token()
         self.session.headers = {
