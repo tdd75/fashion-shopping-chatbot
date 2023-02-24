@@ -44,12 +44,13 @@ class ActionFindProduct(Action):
             query_messages.append(f'Size: {tracker.get_slot("size")}')
 
         _logger.error(tracker.latest_message['entities'])
-        price = [entity['role'] for entity in tracker.latest_message['entities'] if entity['entity'] == 'price']
+        price = [entity['role'] for entity in tracker.latest_message['entities']
+                 if entity['entity'] == 'price']
 
         if price:
             query['ordering'] = 'price' if price[0] == 'asc' else '-price'
             query_messages.append(
-                f'Price: {"High" if price[0] == "asc" else "Low"}')
+                f'Price: {"Low" if price[0] == "asc" else "High"}')
 
         list_product = web_service.get_product(query)
 
