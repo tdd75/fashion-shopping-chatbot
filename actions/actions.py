@@ -26,46 +26,66 @@ class ActionFindProduct(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        _logger.error(tracker.get_slot('category'))
-
         query = {}
-        query_messages = []
+        # query_messages = []
 
-        if tracker.get_slot('category') != None:
-            query['category'] = tracker.get_slot('category')
-            query_messages.append(f'Category: {tracker.get_slot("category")}')
+        entities = tracker.latest_message['entities']
+        for entity in entities:
+            if entity['entity'] not in query:
+                query[entity['entity']] = entity['value']
+                # query_messages.append(
+                #     f'Category: {tracker.get_slot("category")}')
+                continue
+            if entity['entity'] == 'price':
+                price = entity['role']
+                if price:
+                    query['ordering'] = 'min_price' if price[0] == 'asc' else '-max_price'
+                    # query_messages.append(
+                    #     f'Price: {"Low" if price[0] == "asc" else "High"}')
 
-        if tracker.get_slot('color') != None:
-            query['color'] = tracker.get_slot('color')
-            query_messages.append(f'Color: {tracker.get_slot("color")}')
+        # dispatcher.utter_message(
+        #     text=' | '.join(query_messages))
+        dispatcher.utter_template('utter_list_product', tracker)
+        dispatcher.utter_message(json_message={
+            'payload': 'list_product',
+            'data': query
+        })
+        dispatcher.utter_template('utter_sorry_product', tracker)
 
-        if tracker.get_slot('size') != None:
-            query['size'] = tracker.get_slot('size')
-            query_messages.append(f'Size: {tracker.get_slot("size")}')
+        return []
 
-        _logger.error(tracker.latest_message['entities'])
-        price = [entity['role'] for entity in tracker.latest_message['entities']
-                 if entity['entity'] == 'price']
 
-        if price:
-            query['ordering'] = 'price' if price[0] == 'asc' else '-price'
-            query_messages.append(
-                f'Price: {"Low" if price[0] == "asc" else "High"}')
+class ActionPlaceOrder(Action):
+    def name(self) -> Text:
+        return 'action_place_order'
 
-        list_product = web_service.get_product(query)
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        if len(list_product) > 0:
-            dispatcher.utter_message(
-                text=' | '.join(query_messages))
-            dispatcher.utter_template('utter_list_product', tracker)
-            dispatcher.utter_message(json_message={
-                'payload': 'list_product',
-                'data': {
-                    'list_product': list_product,
-                    'type': 'list_product'
-                }
-            })
-        else:
-            dispatcher.utter_template('utter_sorry', tracker)
+        dispatcher.utter_template('utter_place_order', tracker)
+        dispatcher.utter_message(json_message={
+            'payload': 'place_order',
+            'data': {}
+        })
+        dispatcher.utter_template('utter_sorry_cart', tracker)
+
+        return []
+
+
+class ActionOrderStatus(Action):
+    def name(self) -> Text:
+        return 'action_order_status'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_template('utter_order_status', tracker)
+        dispatcher.utter_message(json_message={
+            'payload': 'order_status',
+            'data': {}
+        })
+        dispatcher.utter_template('utter_sorry_order', tracker)
 
         return []

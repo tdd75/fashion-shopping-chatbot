@@ -10,7 +10,10 @@ intents:
   - bot_challenge
   - thanks
   - ask_func
+  - ask_find
   - ask_product
+  - ask_place_order
+  - ask_order_status
 
 entities:
   - color
@@ -60,17 +63,52 @@ responses:
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
 
-  utter_list_product:
-    - text: |-
-        Here are the products that might be right for you:
-
   utter_func:
     - text: |-
         I can help you:
         - Search for products by criteria such as: color, product size, cheap products, high-end products, ...
-        - Order support.
+        - Place order support.
         - Check order status.
         - And answers to some other frequently asked questions.
+
+  utter_find:
+    - text: 'Can you tell me what you are looking for? Some criteria like: type, color, size, price, ...'
+
+  utter_list_product:
+    - text: These are the items that could be suitable for you.
+    - text: Here are some products that may meet your needs.
+    - text: The following products might be a good fit for you.
+    - text: If you're looking for the right products, these might be what you need.
+    - text: Here are some potential products that could be a match for you.
+    - text: These products could be a good option for you.
+    - text: If you're searching for suitable products, these might be worth considering.
+    - text: The following products could be a good choice for you.
+    - text: Here are some products that could meet your requirements.
+    - text: If you're in need of the right products, these could be a good starting point
+
+  utter_place_order:
+    - text: Would you like to purchase the items listed below?
+    - text: Are you interested in buying the following products?
+    - text: Do you wish to buy these items?
+    - text: Are these items something you would like to buy?
+    - text: Would you like to add the following items to your cart?
+    - text: Do you want to buy any of these products?
+    - text: Are these items you'd like to purchase?
+    - text: Do you want to proceed with buying these items?
+    - text: Would you like to place an order for these items?
+    - text: Are these items something you'd like to add to your shopping list?
+
+  utter_order_status:
+    - text: These are your latest orders.
+    - text: Here are the orders you've placed most recently.
+    - text: Your most recent orders are listed here.
+    - text: These are the orders you've made in the past few days/weeks.
+    - text: Here are the orders you've placed recently.
+    - text: Your latest purchases are listed here.
+    - text: These are the orders you've made in the last little while.
+    - text: Here are your most recent transactions/orders.
+    - text: Your recent orders are detailed here.
+    - text: These are the orders you've placed lately.
 
   utter_noproblem:
     - text: No worries, happy to assist you.
@@ -81,15 +119,47 @@ responses:
     - text: Not a problem, always here to help.
     - text: It was nothing, just glad I could assist.
 
-  utter_sorry:
-    - text: Sorry, I couldn't find any matching products
+  utter_sorry_product:
+    - text: I'm sorry, but I couldn't find any products that match your search.
+    - text: Unfortunately, I could not find any products that match your criteria.
+    - text: I'm sorry, there are no products that match your search parameters.
+    - text: We couldn't find any products that match your search.
+    - text: I apologize, but there are no matching products for your query.
+    - text: I'm sorry, but I couldn't find any products that meet your requirements.
+    - text: Unfortunately, I was unable to find any products that match your search terms.
+    - text: We're sorry, there are no products that match your search criteria.
+    - text: I'm sorry, but there are no products that fit your search query.
+    - text: Unfortunately, I couldn't find any products that correspond to your search.
 
+  utter_sorry_order:
+    - text: There are no orders in your recent history.
+    - text: You haven't made any orders recently.
+    - text: You don't have any recent orders.
+    - text: There are no orders in your order history for the past few days/weeks.
+    - text: You haven't placed any orders recently.
+    - text: Your order history doesn't show any recent orders.
+    - text: Unfortunately, there are no recent orders in your account.
+    - text: Your account does not have any recent orders.
+    - text: You have not placed any orders in the recent past.
+    - text: Your recent order history is empty.
+    
+  utter_sorry_cart:
+    - text: It seems that you haven't added any products to your cart lately, please add products and try again.
+    - text: You don't seem to have added any products to your cart recently, please add products and try again.
+    - text: There are no products in your cart at the moment, please add some and try again.
+    - text: Looks like you haven't added any items to your cart recently, please add products and try again.
+    
 actions:
+  - action_place_order
+  - action_order_status
   - action_find_product
   - utter_list_product
   - utter_func
+  - utter_find
   - utter_noproblem
-  - utter_sorry
+  - utter_sorry_product
+  - utter_sorry_order
+  - utter_sorry_cart
 
 session_config:
   session_expiration_time: 60

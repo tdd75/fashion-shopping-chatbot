@@ -1,6 +1,7 @@
 import requests
 import os
 
+
 class WebService:
     def __init__(self):
         self.base_url = 'http://web:8000/api/v1'
@@ -29,6 +30,12 @@ class WebService:
         res = self.session.get(self.base_url + '/products/', params=query)
         if not res.ok:
             raise Exception('Error when get product')
+        return res.json()['results'][:5]
+
+    def get_order(self, query={}):
+        res = self.session.get(self.base_url + '/orders/', params=query)
+        if not res.ok:
+            raise Exception('Error when get order')
         return res.json()['results'][:5]
 
 

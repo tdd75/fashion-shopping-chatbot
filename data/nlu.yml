@@ -136,6 +136,19 @@ nlu:
       - Is there anything I can ask of you?
       - Can you contribute in any way?
 
+  - intent: ask_find
+    examples: |
+      - I am looking to find a product.
+      - I want to search for a product.
+      - I would like to find a specific product.
+      - I am interested in finding a product.
+      - I want to browse products.
+      - I need help finding a product.
+      - I want to discover new products.
+      - I am in search of a product.
+      - I want to find a product that meets my needs.
+      - I am trying to locate a product.
+
   - intent: ask_product
     examples: |
       - I am in the market for an [affordable]{"entity": "price", "role": "asc"} [red](color) [shoe](category) in size [S](size).
@@ -169,50 +182,75 @@ nlu:
       - I'm seeking out a [best-in-class]{"entity": "price", "role": "desc"} [gray](color) [accessories](category) that is also size [3XL](size).
       - I'm in the market for a [coral](color) [hair](category) in size [4XL](size) that is [high-end]{"entity": "price", "role": "desc"}.
 
+  - intent: ask_place_order
+    examples: |
+      - I would like to place an order.
+      - Can I order something?
+      - How can I make a purchase?
+      - I'd like to make a purchase.
+      - I want to order something.
+      - Can you help me place an order?
+      - I'd like to place an order, please.
+      - What is the process for placing an order?
+      - How do I go about ordering?
+      - I am interested in placing an order.
+      - May I order something, please?
+      - Can you take my order?
+      - I am ready to place an order.
+      - What do I need to do to place an order?
+      - I want to place an order for product.
+      - Can you assist me with placing an order?
+      - How do I order product?
+      - I would like to order product.
+      - What is the procedure for placing an order?
+      - Could you guide me through the process of ordering?
+
+  - intent: ask_order_status
+    examples: |
+      - I want to check my order.
+      - Can you help me with my order status?
+      - How can I track my order?
+      - I would like to know the status of my order.
+      - May I have an update on my order?
+      - Can you provide me with the details of my order?
+      - I need to check the status of my order.
+      - What is the progress of my order?
+      - I would like to inquire about my order.
+      - Is it possible to check the status of my order?
+      - Can you tell me when my order will arrive?
+      - I'm curious about the status of my order.
+      - Can you give me an update on my order?
+      - I need to verify the status of my order.
+      - Can you inform me of the current status of my order?
+      - I want to make sure that my order is on track.
+      - How do I know if my order has been shipped?
+      - I would like to check the delivery status of my order.
+      - Can you confirm the status of my order?
+      - Please provide me with an update on my order.
+
   - lookup: category
     examples: |
-      - Topwear
-      - Bottomwear
-      - Watches
-      - Socks
-      - Shoes
-      - Belts
-      - Flip Flops
-      - Bags
-      - Innerwear
-      - Sandal
-      - Shoe Accessories
-      - Fragrance
-      - Jewellery
-      - Lips
-      - Saree
-      - Eyewear
-      - Nails
-      - Scarves
-      - Dress
-      - Loungewear and Nightwear
-      - Wallets
-      - Apparel Set
-      - Headwear
-      - Mufflers
-      - Skin Care
-      - Makeup
-      - Free Gifts
-      - Ties
-      - Accessories
-      - Skin
-      - Beauty Accessories
-      - Water Bottle
-      - Eyes
-      - Bath and Body
-      - Gloves
-      - Sports Accessories
-      - Cufflinks
-      - Sports Equipment
-      - Stoles
-      - Hair
-      - Perfumes
-      - Home Furnishing
-      - Umbrellas
-      - Wristbands
-      - Vouchers
+      - nails
+      - apparel_set
+      - headwear
+      - ties
+      - wallets
+      - jewellery
+      - eyewear
+      - topwear
+      - accessories
+      - belts
+      - loungewear_and_nightwear
+      - sandal
+      - socks
+      - lips
+      - flip_flops
+      - innerwear
+      - dress
+      - watches
+      - makeup
+      - bags
+      - bottomwear
+      - shoes
+      - saree
+      - fragrance

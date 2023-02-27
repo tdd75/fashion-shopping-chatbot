@@ -36,6 +36,8 @@ stories:
       - action: utter_iamabot
       - intent: ask_func
       - action: utter_func
+      - intent: ask_find
+      - action: utter_find
       - intent: ask_product
       - action: action_find_product
       - intent: thanks
@@ -49,22 +51,12 @@ stories:
       - action: action_find_product
       - intent: thanks
       - action: utter_noproblem
-# - story: interactive_story_1
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: check_order_status
-#   - action: action_check_order_status
-#   - intent: cancel_order
-#   - action: utter_cannot_cancel_order
-#   - intent: thanks
-#   - action: utter_noproblem
-
-# - story: interactive_story_1
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: cancel_order
-#   - action: utter_cannot_cancel_order
-#   - intent: that_enough
-#   - action: utter_sorry_cannot_help
+      
+  - story: check order status
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_order_status
+    - action: action_order_status
+    - intent: thanks
+    - action: utter_noproblem

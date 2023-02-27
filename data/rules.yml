@@ -16,22 +16,32 @@ rules:
       - intent: bot_challenge
       - action: utter_iamabot
 
-  - rule: ask func
+  - rule: Thanks
+    steps:
+      - intent: thanks
+      - action: utter_noproblem
+
+  - rule: Ask func
     steps:
       - intent: ask_func
       - action: utter_func
 
-  - rule: find product
+  - rule: Ask find
+    steps:
+      - intent: ask_find
+      - action: utter_find
+
+  - rule: Find product
     steps:
       - intent: ask_product
       - action: action_find_product
 
-  # - rule: cancel order
-  #   steps:
-  #     - intent: cancel_order
-  #     - action: utter_cannot_cancel_order
+  - rule: Place order
+    steps:
+      - intent: ask_place_order
+      - action: action_place_order
 
-  # - rule: check order status
-  #   steps:
-  #     - intent: check_order_status
-  #     - action: action_check_order_status
+  - rule: Check order status
+    steps:
+      - intent: ask_order_status
+      - action: action_order_status
